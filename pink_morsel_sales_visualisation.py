@@ -22,7 +22,8 @@ app.layout = html.Div(
             style={
                 "textAlign": "center",
                 "color": "#2c3e50"
-            }
+            },
+            id="header"
         ),
 
         html.H3(
