@@ -16,4 +16,3 @@ df["price"] = (
 df["sales"] = df["price"]*df["quantity"]
 
 df = df[["sales","region","date"]]
-print(df.head(10))
