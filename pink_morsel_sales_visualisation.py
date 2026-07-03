@@ -1,26 +1,10 @@
-import pandas as p
+import pandas as pd
 import plotly.express as px
 from dash import Dash, html, dcc
 
-df1 = p.read_csv("data/daily_sales_data_0.csv")
-df2 = p.read_csv("data/daily_sales_data_1.csv")
-df3 = p.read_csv("data/daily_sales_data_2.csv")
 
-df = p.concat([df1,df2,df3],ignore_index=True)
-
-
-df = df[df["product"] == "pink morsel"]
-df["price"] = (
-    df["price"]
-    .replace("[$,]", "", regex=True)
-    .astype(float)
-)
-df["sales"] = df["price"]*df["quantity"]
-
-df = df[["sales","region","date"]]
-print(df.head(10))
-
-df["date"] = p.to_datetime(df["date"])
+df = pd.read_csv("formatted_sales_data.csv")
+df["date"] = pd.to_datetime(df["date"])
 
 daily_sales = (
     df.groupby("date")["sales"]
